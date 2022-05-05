@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginStorageUserService } from './services/login.storageUser.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RecuperacionFinal-Cliente';
+  usuario;
+  constructor(
+    private storageUser: LoginStorageUserService,
+  ) {
+    this.usuario = storageUser.getUser();
+    console.log(this.usuario)
+  }
 }

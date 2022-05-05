@@ -1,0 +1,17 @@
+<ng-container *ngIf="usuario">
+  <nav id="sidebarMenu">
+    <div class="position-sticky pt-4">
+      <ul class="nav nav-pills flex-column">
+        <li *ngIf="usuario.isUsuario()" class="text-white">
+          Eres usuario
+        </li>
+        <li *ngIf="usuario.isJefe()" class="text-white">
+          Eres jefe
+        </li>
+        <li *ngIf="usuario.isAdministrador()" class="text-white">
+          Eres admin
+        </li>
+      </ul>
+    </div>
+  </nav>
+</ng-container>
