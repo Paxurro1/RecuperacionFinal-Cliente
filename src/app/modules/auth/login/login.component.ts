@@ -57,16 +57,13 @@ export class LoginComponent implements OnInit {
         window.location.href = ""
         if (this.isAdministrador()) {
           console.log('es admin')
-          // window.location.href = ""
-          // this.navegar('description/descriptioncomponent', {queryParams:''})
+          window.location.href = "admin/crud-usuarios"
         } else if (this.isJefe()) {
           console.log('es jefe')
           // window.location.href = ""
-          // this.navegar('description/descriptioncomponent', {queryParams:''})
         } else if (this.isUsuario()) {
           console.log('es usuario')
           // window.location.href = ""
-          // this.navegar('description/descriptioncomponent', {queryParams:''})
         }
       },
       error: e => {
@@ -93,9 +90,5 @@ export class LoginComponent implements OnInit {
   onReset() {
     this.submitted = false;
     this.login.reset();
-  }
-
-  navegar(route?: string, params?: any): void {
-    this.router.navigate([route], params);
   }
 }
