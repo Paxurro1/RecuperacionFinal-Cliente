@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-12 formulario">
+    <form [formGroup]="registro" (ngSubmit)="onSubmit()" class="row">
+      <div class="mb-3 col-6">
+        <label for="email" class="form-label"><b>Email</b></label>
+        <input type="email" formControlName="email" class="form-control" id="email">
+        <div *ngIf="submitted && formulario['email'].errors">
+          <div *ngIf="formulario['email'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El email no puede estar vacío.
+          </div>
+          <div *ngIf="formulario['email'].errors['email']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El email introducido no tiene un
+            formato válido.</div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="nombre" class="form-label"><b>Nombre</b></label>
+        <input type="text" formControlName="nombre" class="form-control" id="nombre">
+        <div *ngIf="submitted && formulario['nombre'].errors">
+          <div *ngIf="formulario['nombre'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El nombre no puede estar vacío.
+          </div>
+          <div *ngIf="formulario['nombre'].errors['minlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El nombre tiene que tener al menos
+            3 carácteres.</div>
+          <div *ngIf="formulario['nombre'].errors['maxlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El nombre puede tener como máximo
+            20 carácteres.</div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="nombre" class="form-label"><b>Apellidos</b></label>
+        <input type="text" formControlName="apellidos" class="form-control" id="nombre">
+        <div *ngIf="submitted && formulario['apellidos'].errors">
+          <div *ngIf="formulario['apellidos'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El dni no puede estar vacío.
+          </div>
+          <div *ngIf="formulario['apellidos'].errors['minlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El dni tiene que tener al menos
+            9 carácteres.</div>
+          <div *ngIf="formulario['apellidos'].errors['maxlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El dni puede tener como máximo
+            9 carácteres.</div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="nombre" class="form-label"><b>DNI</b></label>
+        <input type="text" formControlName="dni" class="form-control" id="nombre">
+        <div *ngIf="submitted && formulario['dni'].errors">
+          <div *ngIf="formulario['dni'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido no puede estar vacío.
+          </div>
+          <div *ngIf="formulario['dni'].errors['minlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido tiene que tener al menos
+            3 carácteres.</div>
+          <div *ngIf="formulario['dni'].errors['maxlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido puede tener como máximo
+            30 carácteres.</div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="pass1" class="form-label"><b>Contraseña</b></label>
+        <input type="password" formControlName="pass1" class="form-control" id="pass1"
+          pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})">
+        <div *ngIf="submitted && formulario['pass1'].errors">
+          <div *ngIf="formulario['pass1'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La contraseña no puede estar
+            vacía.</div>
+          <div *ngIf="formulario['pass1'].errors['minlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La contraseña debe tener mínimo 8
+            carácteres.</div>
+          <div *ngIf="formulario['pass1'].errors['pattern']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La contraseña debe tener una
+            minúscula, una mayúscula y un número.</div>
+          <div *ngIf="formulario['pass1'].errors['maxlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La contraseña puede tener como
+            máximo 30 carácteres.</div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="pass2" class="form-label"><b>Repite la contraseña</b></label>
+        <input type="password" formControlName="pass2" class="form-control" id="pass2">
+        <div *ngIf="submitted && formulario['pass2'].errors">
+          <div *ngIf="formulario['pass2'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La contraseña no puede estar
+            vacía.</div>
+          <div *ngIf="formulario['pass2'].errors['NoPassswordMatch']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Las contraseñas no coinciden.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-12">
+        <p class="form-label"><b>Roles</b></p>
+        <div class="col pb-2 d-flex justify-content-between" id="roles">
+          <label for="cbox1"><input type="checkbox" value="1" (change)="onCheckboxChange($event)"> Administrador</label>
+          <label for="cbox2"><input type="checkbox" value="2" (change)="onCheckboxChange($event)"> Jefe</label>
+          <label for="cbox3"><input type="checkbox" value="3" (change)="onCheckboxChange($event)"> Usuario</label>
+        </div>
+        <div *ngIf="submitted && formulario['checkArray'].errors">
+          <div *ngIf="formulario['checkArray'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tiene que tener al menos un rol.</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" value="Registro">Registrar usuario</button>
+    </form>
+  </div>
+</div>
