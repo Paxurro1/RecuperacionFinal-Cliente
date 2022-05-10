@@ -5,6 +5,9 @@ import { CrudAdministradoresService } from 'src/app/services/crud-administradore
 import { LoginStorageUserService } from 'src/app/services/login.storageUser.service';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Usuario } from 'src/app/models/usuario';
+import { ModificarUsuarioComponent } from '../modificar-usuario/modificar-usuario.component';
 
 @Component({
   selector: 'app-crud-admin',
@@ -27,6 +30,7 @@ export class CrudAdminComponent implements AfterViewInit, OnDestroy, OnInit {
     private router: Router,
     private toastr: ToastrService,
     private storageUser: LoginStorageUserService,
+    private modal: NgbModal,
   ) {
     this.usuario = storageUser.getUser();
     this.dni = this.usuario?.dni
@@ -54,17 +58,26 @@ export class CrudAdminComponent implements AfterViewInit, OnDestroy, OnInit {
     });
   }
 
-  public getUsuarios() {
+  getUsuarios() {
     this.adminService.getUsuarios().subscribe((response) => {
       this.usuarios = response;
-      // console.log(this.usuarios);
+      console.log(this.usuarios);
       this.rerender();
       this.dtTrigger.next(this.usuarios);
       $.fn.dataTable.ext.errMode = 'throw';
     });
   }
 
-  public borrarUsuario(dniUsuario: string) {
+  editarUsuario(usuario: Usuario) {
+    this.modal.open(ModificarUsuarioComponent, {
+      size: 'xl',
+      backdrop: 'static',
+      keyboard: false,
+    });
+    this.adminService.usuarioTrigger.emit([usuario]);
+  }
+
+  borrarUsuario(dniUsuario: string) {
     this.adminService.borrarUsuario(dniUsuario).subscribe({
       next: (res) => {
         this.toastr.success('Usuario eliminado.', 'Eliminado');

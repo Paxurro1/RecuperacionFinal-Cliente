@@ -97,8 +97,8 @@ export class RegistroUsuarioComponent implements OnInit {
         this.toastr.error('El usuario no ha podido registrarse.', 'Error');
       }
     })
-    console.log(datos);
-    // this.onReset();
+    // console.log(datos);
+    this.onReset();
   }
 
   get formulario() {

@@ -6,12 +6,14 @@ import { CrudAdminComponent } from './crud-admin/crud-admin.component';
 import { DataTablesModule } from 'angular-datatables';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModificarUsuarioComponent } from './modificar-usuario/modificar-usuario.component';
 
 
 @NgModule({
   declarations: [
     CrudAdminComponent,
-    RegistroUsuarioComponent
+    RegistroUsuarioComponent,
+    ModificarUsuarioComponent
   ],
   imports: [
     CommonModule,
