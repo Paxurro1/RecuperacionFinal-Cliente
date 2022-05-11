@@ -12,6 +12,11 @@
             aria-current="page"> Añadir usuarios
           </a>
         </li>
+        <li *ngIf="usuario.isAdministrador()">
+          <a class="nav-link link-white" routerLinkActive="active" routerLink="admin/elegir-proyecto"
+            aria-current="page"> Administrar proyectos
+          </a>
+        </li>
         <li *ngIf="usuario.isUsuario()" class="text-white">
           Eres usuario
         </li>
