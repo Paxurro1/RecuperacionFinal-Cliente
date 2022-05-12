@@ -10,6 +10,9 @@ import { ModificarUsuarioComponent } from './modificar-usuario/modificar-usuario
 import { ElegirProyectoComponent } from './elegir-proyecto/elegir-proyecto.component';
 import { DragDropModule } from  '@angular/cdk/drag-drop';
 import { GestionarProyectoComponent } from './gestionar-proyecto/gestionar-proyecto.component';
+import { CrudTareasComponent } from './crud-tareas/crud-tareas.component';
+import { RegistroTareaComponent } from './registro-tarea/registro-tarea.component';
+import { ModicarTareaComponent } from './modicar-tarea/modicar-tarea.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { GestionarProyectoComponent } from './gestionar-proyecto/gestionar-proye
     RegistroUsuarioComponent,
     ModificarUsuarioComponent,
     ElegirProyectoComponent,
-    GestionarProyectoComponent
+    GestionarProyectoComponent,
+    CrudTareasComponent,
+    RegistroTareaComponent,
+    ModicarTareaComponent
   ],
   imports: [
     CommonModule,
