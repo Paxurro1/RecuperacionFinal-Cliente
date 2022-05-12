@@ -4,6 +4,8 @@ import { Proyecto } from 'src/app/models/proyecto';
 import { GestionProyectoService } from 'src/app/services/gestion-proyecto.service';
 import { ToastrService } from 'ngx-toastr';
 import { Jefe } from 'src/app/models/jefe';
+import { Router } from '@angular/router';
+import { IdStorageIdService } from 'src/app/services/id.storageID.service';
 
 @Component({
   selector: 'app-elegir-proyecto',
@@ -18,6 +20,8 @@ export class ElegirProyectoComponent implements OnInit {
   constructor(
     private gestionService: GestionProyectoService,
     private toastr: ToastrService,
+    private router: Router,
+    private storageId: IdStorageIdService,
   ) { }
 
   ngOnInit(): void {
@@ -61,8 +65,20 @@ export class ElegirProyectoComponent implements OnInit {
     }
   }
 
-  verProyecto() {
+  verProyecto(id: number) {
+    this.storageId.setId(id);
+    this.navegar('admin/gestionar-proyecto', {queryParams:''})
+  }
+
+  verTareas() {
 
   }
 
+  asignarTareas() {
+
+  }
+
+  navegar(route?: string, params?: any): void {
+    this.router.navigate([route], params);
+  }
 }

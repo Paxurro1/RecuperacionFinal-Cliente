@@ -8,8 +8,11 @@
     <div class="col-sm-12">
       <div *ngFor="let proyecto of proyectos" ngClass="row mb-2 bg-secondary p-2 border border-primary rounded text-white"
         attr.id="{{proyecto.id}}">
-        <div class="col">
+        <div class="col-12">
           <label class="row" for="jefe{{proyecto.dni_jefe}}">
+            <span class="col-4 text-center">ID</span>
+            <span class="col-4 text-center">Nombre</span>
+            <span class="col-4 text-center">Jefe</span>
             <input class="col-4" type="text"readonly [(ngModel)]="proyecto.id">
             <input class="col-4" type="text" [(ngModel)]="proyecto.nombre">
             <select class="col-4" [(ngModel)]="proyecto.dni_jefe">
@@ -17,8 +20,14 @@
             </select>
           </label>
         </div>
-        <div class="col-sm-12 mt-1 text-center">
-          <input type="button" class="btn btn-success m-1" value="Ver proyecto" (click)='verProyecto()'>
+        <div class="col-sm-4 mt-1 text-center">
+          <input type="button" class="btn btn-success m-1" value="Ver proyecto" (click)='verProyecto(proyecto.id)'>
+        </div>
+        <div class="col-sm-4 mt-1 text-center">
+          <input type="button" class="btn btn-success m-1" value="Editar tareas" (click)='verTareas()'>
+        </div>
+        <div class="col-sm-4 mt-1 text-center">
+          <input type="button" class="btn btn-success m-1" value="Asignar tareas" (click)='asignarTareas()'>
         </div>
       </div>
     </div>

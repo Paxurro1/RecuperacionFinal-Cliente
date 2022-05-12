@@ -1,1 +1,70 @@
-<p>gestionar-proyecto works!</p>
+<div class="row">
+  <div class="page-header d-flex justify-content-between pb-3">
+    <h1 class="h2">Gestionando el proyecto {{idProyecto}} </h1>
+  </div>
+</div>
+<div class="card p-3" cdkDropListGroup>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row bg-white p-2 rounded border-white">
+        <div class="col-md-4 col-sm-6 mt-1">
+          <div class="row">
+            <div class="col-12 border border-primary rounded bg-light">
+              <h2 class="h4">Usuarios</h2>
+              <div class="row">
+                <div class="col-sm-9">
+                  <div class="card">
+                    <div class="card-body ps-3" cdkDropList [cdkDropListData]="trabajadores"
+                      (cdkDropListDropped)="drop($event)">
+                      <div *ngFor="let t of trabajadores"
+                        ngClass="trabajadores h6 text-white bg-secondary rounded border-secondary row p-1 mb-2"
+                        attr.id="{{t.dni}}" cdkDrag>
+                        {{t.nombre}} - {{t.dni}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-6 mt-1">
+          <div class="row">
+            <div class="col-12">
+              <div *ngFor="let proyecto of proyectos"
+                ngClass="row mb-2 bg-light p-2 border border-primary rounded text-black" attr.id="{{proyecto.id}}">
+                <h2 class="h4">Proyecto {{proyecto.nombre}}</h2>
+                <div class="row">
+                  <div class="col">
+                    <div ngClass="row mb-2 bg-success p-2 border border-primary rounded text-white"
+                      attr.id="{{proyecto.id}}">
+                      <div class="col">
+                        <label class="row">
+                          <h3 class="col-12">Miembros del proyecto</h3>
+                        </label>
+                        <div class="row">
+                          <div class="col-12">
+                            <div cdkDropList [cdkDropListData]="proyecto.trabajadores" class="py-3"
+                              (cdkDropListDropped)="drop($event)">
+                              <div *ngFor="let trabajador of proyecto.trabajadores"
+                                ngClass="trabajadores text-white bg-secondary rounded border-secondary row p-1 mb-2"
+                                attr.id="{{trabajador.dni}}" cdkDrag>
+                                <span class="h6 text-white col-12 col-md-3">{{trabajador.nombre}} - {{trabajador.dni}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 mt-1 text-center">
+          <input type="button" class="btn btn-outline-primary m-1" value="Guardar" (click)='actualizarTrabajadores()'>
+        </div>
+      </div>
+    </div>
+  </div>

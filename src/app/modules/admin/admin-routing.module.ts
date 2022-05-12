@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CrudAdminComponent } from './crud-admin/crud-admin.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { ElegirProyectoComponent } from './elegir-proyecto/elegir-proyecto.component';
+import { GestionarProyectoComponent } from './gestionar-proyecto/gestionar-proyecto.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path:'elegir-proyecto',
     component: ElegirProyectoComponent
+  },
+  {
+    path:'gestionar-proyecto',
+    component: GestionarProyectoComponent
   },
 ];
 

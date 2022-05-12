@@ -1,8 +1,8 @@
-import { Usuario } from "./usuario";
+import { Trabajador } from "./trabajador";
 
 export interface ProyectoResponse {
   id: number;
   nombre: string;
   dni_jefe: string;
-  trabajadores?: Usuario[];
+  trabajadores?: Trabajador[];
 }

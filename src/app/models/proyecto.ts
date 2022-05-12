@@ -1,5 +1,5 @@
-import { Usuario } from "./usuario";
 import { ProyectoResponse } from "./proyectoResponse";
+import { Trabajador } from "./trabajador";
 
 
 export class Proyecto {
@@ -17,7 +17,7 @@ export class Proyecto {
     public id: number,
     public nombre: string,
     public dni_jefe: string,
-    public trabajadores?: Usuario[],
+    public trabajadores?: Trabajador[],
   ) { }
 
 }
