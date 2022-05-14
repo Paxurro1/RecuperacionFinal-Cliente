@@ -12,7 +12,7 @@ import { DragDropModule } from  '@angular/cdk/drag-drop';
 import { GestionarProyectoComponent } from './gestionar-proyecto/gestionar-proyecto.component';
 import { CrudTareasComponent } from './crud-tareas/crud-tareas.component';
 import { RegistroTareaComponent } from './registro-tarea/registro-tarea.component';
-import { ModicarTareaComponent } from './modicar-tarea/modicar-tarea.component';
+import { ModificarTareaComponent } from './modificar-tarea/modificar-tarea.component';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { ModicarTareaComponent } from './modicar-tarea/modicar-tarea.component';
     GestionarProyectoComponent,
     CrudTareasComponent,
     RegistroTareaComponent,
-    ModicarTareaComponent
+    ModificarTareaComponent
   ],
   imports: [
     CommonModule,

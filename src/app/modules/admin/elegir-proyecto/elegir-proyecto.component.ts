@@ -70,8 +70,9 @@ export class ElegirProyectoComponent implements OnInit {
     this.navegar('admin/gestionar-proyecto', {queryParams:''})
   }
 
-  verTareas() {
-
+  verTareas(id: number) {
+    this.storageId.setId(id);
+    this.navegar('admin/crud-tareas', {queryParams:''})
   }
 
   asignarTareas() {
