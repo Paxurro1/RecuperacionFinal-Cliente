@@ -17,7 +17,7 @@ export class Usuario {
     public email: string,
     public nombre: string,
     public apellidos: string,
-    public dni?: string,
+    public dni: string,
     public roles?: Array<any>,
   ) { }
 

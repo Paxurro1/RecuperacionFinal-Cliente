@@ -75,8 +75,9 @@ export class ElegirProyectoComponent implements OnInit {
     this.navegar('admin/crud-tareas', {queryParams:''})
   }
 
-  asignarTareas() {
-
+  asignarTareas(id: number) {
+    this.storageId.setId(id);
+    this.navegar('admin/elegir-usuario', {queryParams:''})
   }
 
   navegar(route?: string, params?: any): void {

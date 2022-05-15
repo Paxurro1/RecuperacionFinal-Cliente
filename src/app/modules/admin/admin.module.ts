@@ -13,6 +13,8 @@ import { GestionarProyectoComponent } from './gestionar-proyecto/gestionar-proye
 import { CrudTareasComponent } from './crud-tareas/crud-tareas.component';
 import { RegistroTareaComponent } from './registro-tarea/registro-tarea.component';
 import { ModificarTareaComponent } from './modificar-tarea/modificar-tarea.component';
+import { ElegirUsuarioComponent } from './elegir-usuario/elegir-usuario.component';
+import { AsignarTareasComponent } from './asignar-tareas/asignar-tareas.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { ModificarTareaComponent } from './modificar-tarea/modificar-tarea.compo
     GestionarProyectoComponent,
     CrudTareasComponent,
     RegistroTareaComponent,
-    ModificarTareaComponent
+    ModificarTareaComponent,
+    ElegirUsuarioComponent,
+    AsignarTareasComponent
   ],
   imports: [
     CommonModule,

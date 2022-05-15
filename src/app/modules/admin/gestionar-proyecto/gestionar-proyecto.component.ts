@@ -72,7 +72,4 @@ export class GestionarProyectoComponent implements OnInit {
       }
     })
   }
-
-
-
 }

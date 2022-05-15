@@ -6,6 +6,8 @@ import { ElegirProyectoComponent } from './elegir-proyecto/elegir-proyecto.compo
 import { GestionarProyectoComponent } from './gestionar-proyecto/gestionar-proyecto.component';
 import { CrudTareasComponent } from './crud-tareas/crud-tareas.component';
 import { RegistroTareaComponent } from './registro-tarea/registro-tarea.component';
+import { ElegirUsuarioComponent } from './elegir-usuario/elegir-usuario.component';
+import { AsignarTareasComponent } from './asignar-tareas/asignar-tareas.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path:'registro-tarea',
     component: RegistroTareaComponent
+  },
+  {
+    path:'elegir-usuario',
+    component: ElegirUsuarioComponent
+  },
+  {
+    path:'asignar-tareas',
+    component: AsignarTareasComponent
   },
 ];
 
