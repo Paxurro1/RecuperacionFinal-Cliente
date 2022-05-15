@@ -8,6 +8,7 @@ import { CrudTareasComponent } from './crud-tareas/crud-tareas.component';
 import { RegistroTareaComponent } from './registro-tarea/registro-tarea.component';
 import { ElegirUsuarioComponent } from './elegir-usuario/elegir-usuario.component';
 import { AsignarTareasComponent } from './asignar-tareas/asignar-tareas.component';
+import { CrearProyectoComponent } from './crear-proyecto/crear-proyecto.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path:'asignar-tareas',
     component: AsignarTareasComponent
+  },
+  {
+    path:'crear-proyecto',
+    component: CrearProyectoComponent
   },
 ];
 

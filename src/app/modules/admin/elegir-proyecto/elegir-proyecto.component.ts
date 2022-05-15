@@ -80,7 +80,24 @@ export class ElegirProyectoComponent implements OnInit {
     this.navegar('admin/elegir-usuario', {queryParams:''})
   }
 
+  addProyecto(){
+    this.navegar('admin/crear-proyecto', {queryParams:''})
+  }
+
+  borrarProyecto(id: number) {
+    this.gestionService.borrarProyecto(id).subscribe({
+      next: (res) => {
+        this.toastr.success('Proyecto eliminado.', 'Eliminada');
+        this.getProyectos()
+      },
+      error: e => {
+        this.toastr.error('El proyecto no ha podido ser eliminado.', 'Error');
+      }
+    })
+  }
+
   navegar(route?: string, params?: any): void {
     this.router.navigate([route], params);
   }
+
 }

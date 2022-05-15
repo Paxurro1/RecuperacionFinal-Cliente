@@ -1,7 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="page-header d-flex justify-content-between pb-3">
+    <div class="page-header d-flex justify-content-between pb-3 col-8">
       <h1 class="h2">Eelegir proyecto</h1>
+    </div>
+    <div class="col-4 d-flex justify-content-end pb-2 col-4">
+      <button (click)="addProyecto()" class="btn btn-info px-2 py-1 me-2" type="submit">
+        Registrar proyecto
+      </button>
     </div>
   </div>
   <div>
@@ -21,14 +26,17 @@
               </select>
             </label>
           </div>
-          <div class="col-sm-4 mt-1 text-center">
+          <div class="col-sm-3 mt-1 text-center">
             <input type="button" class="btn btn-success m-1" value="Ver proyecto" (click)='verProyecto(proyecto.id)'>
           </div>
-          <div class="col-sm-4 mt-1 text-center">
+          <div class="col-sm-3 mt-1 text-center">
             <input type="button" class="btn btn-success m-1" value="Ver tareas" (click)='verTareas(proyecto.id)'>
           </div>
-          <div class="col-sm-4 mt-1 text-center">
+          <div class="col-sm-3 mt-1 text-center">
             <input type="button" class="btn btn-success m-1" value="Asignar tareas" (click)='asignarTareas(proyecto.id)'>
+          </div>
+          <div class="col-sm-3 mt-1 text-center">
+            <input type="button" class="btn btn-danger m-1" value="Borrar proyecto" (click)='borrarProyecto(proyecto.id)'>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import { RegistroTareaComponent } from './registro-tarea/registro-tarea.componen
 import { ModificarTareaComponent } from './modificar-tarea/modificar-tarea.component';
 import { ElegirUsuarioComponent } from './elegir-usuario/elegir-usuario.component';
 import { AsignarTareasComponent } from './asignar-tareas/asignar-tareas.component';
+import { CrearProyectoComponent } from './crear-proyecto/crear-proyecto.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AsignarTareasComponent } from './asignar-tareas/asignar-tareas.componen
     RegistroTareaComponent,
     ModificarTareaComponent,
     ElegirUsuarioComponent,
-    AsignarTareasComponent
+    AsignarTareasComponent,
+    CrearProyectoComponent
   ],
   imports: [
     CommonModule,

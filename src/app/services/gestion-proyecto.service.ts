@@ -67,4 +67,20 @@ export class GestionProyectoService {
     return this.http.post(url, datos, { headers: headers });
   }
 
+  public addProyecto(datos: object) {
+    let url: string = this.ruta + "addProyecto";
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, datos, { headers: headers });
+  }
+
+  public borrarProyecto(id: number) {
+    let url: string = this.ruta + 'borrarProyecto/' + id;
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.delete(url, { headers });
+  }
+
 }

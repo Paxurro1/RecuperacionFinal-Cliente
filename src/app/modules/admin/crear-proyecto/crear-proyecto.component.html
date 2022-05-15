@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="page-header d-flex justify-content-between pb-3">
+    <h1 class="h2">Creando un un proyecto</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 formulario">
+    <form [formGroup]="registro" (ngSubmit)="onSubmit()" class="row">
+      <div class="mb-3 col-6">
+        <label for="nombre" class="form-label"><b>Nombre</b></label>
+        <input type="text" formControlName="nombre" class="form-control" id="nombre">
+        <div *ngIf="submitted && formulario['nombre'].errors">
+          <div *ngIf="formulario['nombre'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El nombre no puede estar
+            vacía.
+          </div>
+          <div *ngIf="formulario['nombre'].errors['minlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El nombre introducido tiene
+            que tener al menos 5 carácteres.
+          </div>
+          <div *ngIf="formulario['nombre'].errors['maxlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El nombre introducido tiene
+            que tener máximo 40 carácteres.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="dificultad" class="form-label"><b>Jefe</b></label>
+        <select class="col-4" formControlName="jefe">
+          <option *ngFor="let jefe of jefes" [value]="jefe.dni">{{jefe.nombre}}</option>
+        </select>
+        <div *ngIf="submitted && formulario['jefe'].errors">
+          <div *ngIf="formulario['jefe'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tienes que elegir un jefe.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" value="Registro">Registrar tarea</button>
+    </form>
+  </div>
+</div>
