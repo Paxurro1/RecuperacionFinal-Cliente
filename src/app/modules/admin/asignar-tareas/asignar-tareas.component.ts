@@ -66,8 +66,10 @@ export class AsignarTareasComponent implements OnInit {
 
   actualizarTareas() {
     var datos = {
+      'tareasSolas': this.tareas,
       'trabajadores': this.trabajadores
     }
+    // console.log(datos)
     this.asignarService.actualizarTareas(datos).subscribe({
       next: (res) => {
         this.toastr.success('Trabajadores actualizados.', 'Actualizado');
