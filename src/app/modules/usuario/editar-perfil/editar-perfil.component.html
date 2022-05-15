@@ -1,6 +1,9 @@
 <div class="row">
+  <div class="col-12">
+    <h1 class="modal-title">Edición de perfil</h1>
+  </div>
   <div class="col-12 formulario">
-    <form [formGroup]="registro" (ngSubmit)="onSubmit()" class="row">
+    <form [formGroup]="editar" (ngSubmit)="onSubmit()" class="row">
       <div class="mb-3 col-6">
         <label for="email" class="form-label"><b>Email</b></label>
         <input type="email" formControlName="email" class="form-control" id="email">
@@ -36,10 +39,12 @@
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido no puede estar vacío.
           </div>
           <div *ngIf="formulario['apellidos'].errors['minlength']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido tiene que tener al menos
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido tiene que tener al
+            menos
             3 carácteres.</div>
           <div *ngIf="formulario['apellidos'].errors['maxlength']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido puede tener como máximo
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido puede tener como
+            máximo
             30 carácteres.</div>
         </div>
       </div>
@@ -58,7 +63,7 @@
             9 carácteres.</div>
         </div>
       </div>
-      <div class="mb-3 col-6">
+      <!-- <div class="mb-3 col-6">
         <label for="pass1" class="form-label"><b>Contraseña</b></label>
         <input type="password" formControlName="pass1" class="form-control" id="pass1"
           pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})">
@@ -88,20 +93,14 @@
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Las contraseñas no coinciden.
           </div>
         </div>
-      </div>
-      <div class="mb-3 col-12">
-        <p class="form-label"><b>Roles</b></p>
-        <div class="col pb-2 d-flex justify-content-between" id="roles">
-          <label for="cbox1"><input type="checkbox" value="1" (change)="onCheckboxChange($event)"> Administrador</label>
-          <label for="cbox2"><input type="checkbox" value="2" (change)="onCheckboxChange($event)"> Jefe</label>
-          <label for="cbox3"><input type="checkbox" value="3" (change)="onCheckboxChange($event)"> Usuario</label>
-        </div>
-        <div *ngIf="submitted && formulario['checkArray'].errors">
-          <div *ngIf="formulario['checkArray'].errors['required']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tiene que tener al menos un rol.</div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary" value="Registro">Registrar usuario</button>
+      </div> -->
+      <button type="submit" class="btn btn-primary" value="editar">Editar perfil</button>
     </form>
+  </div>
+  <div class="col-6 text-center">
+    <input type="button" class="btn btn-danger m-1" value="Cerrar sesión" (click)='salir()'>
+  </div>
+  <div class="col-6 text-center">
+    <input type="button" class="btn btn-warning m-1" value="Cambiar contraseña" (click)='cambiarPass()'>
   </div>
 </div>

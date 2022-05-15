@@ -75,17 +75,8 @@ export class ModificarUsuarioComponent implements OnInit {
       ],
       dni: [this.usuarioModificado?.dni, Validators.compose([
         Validators.required, Validators.minLength(9), Validators.maxLength(9)])
-      ],
-      pass1: ['Superman888', Validators.compose([
-        Validators.required, Validators.minLength(8), Validators.maxLength(30), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{8,30})')])
-      ],
-      pass2: ['Superman888', Validators.compose([
-        Validators.required])
-      ],
-    },
-      {
-        validator: [this.passwordMatchValidator]
-      }
+      ]
+    }
     );
   }
 
@@ -102,14 +93,6 @@ export class ModificarUsuarioComponent implements OnInit {
         }
         i++;
       });
-    }
-  }
-
-  passwordMatchValidator(control: AbstractControl) {
-    const password: string = control.get('pass1')?.value;
-    const confirmPassword: string = control.get('pass2')?.value;
-    if (password !== confirmPassword) {
-      control.get('pass2')?.setErrors({ NoPassswordMatch: true });
     }
   }
 

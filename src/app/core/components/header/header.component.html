@@ -1,5 +1,5 @@
 <header class="sticky-top flex-md-nowrap p-0 text-light user-select-none bg-success">
-  <div class="d-flex align-items-center">
+  <div class="d-flex bd-highlight align-items-center">
     <div class="me-auto p-2">
       <a href="#">
         <img height="32" src="{{imgLogo}}" alt="Logo de la página">
@@ -8,18 +8,9 @@
     <div class="p-2">
       <div class="text-end ps-3">
         <div class="dropdown text-end">
-          <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownPerfil"
-            data-bs-toggle="dropdown" aria-expanded="false">
+          <a routerLink="user/editar-perfil" class="d-block link-light text-decoration-none" aria-expanded="false">
             <img src="https://picsum.photos/200" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownPerfil">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Cambiar rol...</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><input type="button" class="dropdown-item" value="Salir" (click)='salir()'></li>
-          </ul>
         </div>
       </div>
     </div>

@@ -17,11 +17,11 @@ import { ModificarUsuarioComponent } from '../modificar-usuario/modificar-usuari
 export class CrudAdminComponent implements AfterViewInit, OnDestroy, OnInit {
 
   @ViewChild(DataTableDirective, { static: false })
-  dtElement: DataTableDirective | any;
+  dtElement?: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject<any>();
 
-  usuarios: any = [];
+  public usuarios: any = [];
   usuario;
   dni?: string;
 
@@ -54,7 +54,6 @@ export class CrudAdminComponent implements AfterViewInit, OnDestroy, OnInit {
   rerender(): void {
     this.dtElement!.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.destroy();
-
     });
   }
 
