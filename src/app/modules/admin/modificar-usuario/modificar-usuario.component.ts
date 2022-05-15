@@ -127,10 +127,10 @@ export class ModificarUsuarioComponent implements OnInit {
       'nombre': this.datosUsuario.value.nombre,
       'apellidos': this.datosUsuario.value.apellidos,
       'dni': this.datosUsuario.value.dni,
-      'pass': this.datosUsuario.value.pass1,
       'roles': this.datosUsuario.value.checkArray,
       'dniAntiguo': this.dniAntiguo,
     }
+    // console.log(datos)
     this.adminService.editarUsuario(datos).subscribe({
       next: (res) => {
         this.toastr.success('Usuario actualizado.', 'Actualizado');

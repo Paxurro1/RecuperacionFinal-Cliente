@@ -41,8 +41,8 @@
                       <p>{{u.email}}</p>
                     </td>
                     <td scope="col">
-                      <button (click)="editarUsuario(u)" class="btn btn-outline-warning px-2 py-1 me-2" type="submit"
-                        aria-label="modificar">
+                      <button *ngIf="u.dni != this.dni" (click)="editarUsuario(u)"
+                        class="btn btn-outline-warning px-2 py-1 me-2" type="submit" aria-label="modificar">
                         Modificar
                       </button>
                       <button *ngIf="u.dni != this.dni" (click)="borrarUsuario(u.dni)"
