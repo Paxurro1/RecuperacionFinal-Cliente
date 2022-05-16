@@ -49,7 +49,7 @@ export class ElegirRolComponent implements OnInit {
     } else if (this.usuario!.rol_activo == 2) {
       window.location.href = "jefe/elegir-proyecto"
     } else if (this.usuario!.rol_activo == 3) {
-      window.location.href = "jefe/crud-usuarios"
+      window.location.href = "user/elegir-proyecto"
     }
   }
 

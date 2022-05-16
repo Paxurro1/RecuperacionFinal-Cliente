@@ -27,6 +27,11 @@
             aria-current="page"> Administrar proyectos
           </a>
         </li>
+        <li *ngIf="usuario.rol_activo == 3">
+          <a class="nav-link link-white" routerLinkActive="active" routerLink="user/elegir-proyecto"
+            aria-current="page"> Elegir proyecto
+          </a>
+        </li>
       </ul>
     </div>
   </nav>

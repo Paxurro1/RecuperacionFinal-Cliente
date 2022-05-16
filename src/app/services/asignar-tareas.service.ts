@@ -73,4 +73,39 @@ export class AsignarTareasService {
     });
     return this.http.post(url, datos, { headers: headers });
   }
+
+  public getHacer(dni: string, id: number) {
+    let url: string = this.ruta + "getHacer/" + id + "/" + dni;
+    return this.http.get<Tarea[]>(url).pipe(
+      map((resp: Tarea[]) => {
+        return resp;
+      })
+    );
+  }
+
+  public getHaciendo(dni: string, id: number) {
+    let url: string = this.ruta + "getHaciendo/" + id + "/" + dni;
+    return this.http.get<Tarea[]>(url).pipe(
+      map((resp: Tarea[]) => {
+        return resp;
+      })
+    );
+  }
+
+  public getHecho(dni: string, id: number) {
+    let url: string = this.ruta + "getHecho/" + id + "/" + dni;
+    return this.http.get<Tarea[]>(url).pipe(
+      map((resp: Tarea[]) => {
+        return resp;
+      })
+    );
+  }
+
+  public actualizarTareasUsuario(datos: object) {
+    let url: string = this.ruta + "actualizarTareasUsuario";
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, datos, { headers: headers });
+  }
 }

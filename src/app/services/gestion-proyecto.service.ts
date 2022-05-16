@@ -118,4 +118,13 @@ export class GestionProyectoService {
     return this.http.post(url, datos, { headers: headers });
   }
 
+  public getProyectosUsuario(dni: string) {
+    let url: string = this.ruta + 'getProyectosUsuario/' + dni;
+    return this.http.get<ProyectoResponse[]>(url).pipe(
+      map((resp: ProyectoResponse[]) => {
+        return resp.map((proyecto) => Proyecto.proyectoJSON(proyecto));
+      })
+    );
+  }
+
 }

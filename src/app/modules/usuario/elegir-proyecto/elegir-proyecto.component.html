@@ -1,1 +1,27 @@
-<p>elegir-proyecto works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="page-header d-flex justify-content-between pb-3 col-8">
+      <h1 class="h2">Proyectos en los que trabajas {{usuario?.nombre}}</h1>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div *ngFor="let proyecto of proyectos"
+          ngClass="row mb-2 bg-secondary p-2 border border-primary rounded text-white" attr.id="{{proyecto.id}}">
+          <div class="col-12">
+            <label class="row" for="jefe{{proyecto.dni_jefe}}">
+              <span class="col-6 text-center">ID</span>
+              <span class="col-6 text-center">Nombre</span>
+              <input class="col-6" type="text" readonly [(ngModel)]="proyecto.id">
+              <input class="col-6" type="text" readonly [(ngModel)]="proyecto.nombre">
+            </label>
+          </div>
+          <div class="col-sm-12 mt-1 text-center">
+            <input type="button" class="btn btn-success m-1" value="Ver tareas" (click)='verTareas(proyecto.id)'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
