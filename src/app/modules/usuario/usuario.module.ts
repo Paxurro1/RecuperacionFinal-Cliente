@@ -6,13 +6,15 @@ import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 import { CambiarPassComponent } from './cambiar-pass/cambiar-pass.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ElegirRolComponent } from './elegir-rol/elegir-rol.component';
+import { ElegirProyectoComponent } from './elegir-proyecto/elegir-proyecto.component';
 
 
 @NgModule({
   declarations: [
     EditarPerfilComponent,
     CambiarPassComponent,
-    ElegirRolComponent
+    ElegirRolComponent,
+    ElegirProyectoComponent
   ],
   imports: [
     CommonModule,
