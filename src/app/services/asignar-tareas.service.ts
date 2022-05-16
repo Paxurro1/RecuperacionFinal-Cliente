@@ -42,4 +42,35 @@ export class AsignarTareasService {
       })
     );
   }
+
+  public getUsuariosProyectoJefe(id: number) {
+    let url: string = this.ruta + 'getUsuariosProyectoJefe/' + id;
+    return this.http.get<Usuario[]>(url);
+  }
+
+  public getUsuarioConTareasJefe(id: number, dni: string) {
+    let url: string = this.ruta + "getUsuarioConTareasJefe/" + id + "/" + dni;
+    return this.http.get<Trabajador[]>(url).pipe(
+      map((resp: Trabajador[]) => {
+        return resp;
+      })
+    );
+  }
+
+  public getTareasSinAsignarJefe(id: number, dni: string) {
+    let url: string = this.ruta + "getTareasSinAsignarJefe/" + id + "/" + dni;
+    return this.http.get<Tarea[]>(url).pipe(
+      map((resp: Tarea[]) => {
+        return resp;
+      })
+    );
+  }
+
+  public actualizarTareasJefe(datos: object) {
+    let url: string = this.ruta + "actualizarTareasJefe";
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, datos, { headers: headers });
+  }
 }

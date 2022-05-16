@@ -14,7 +14,7 @@ const routes: Routes = [
     component: ElegirProyectoComponent
   },
   {
-    path:'asignar-tarea',
+    path:'asignar-tareas',
     component: AsignarTareasComponent
   },
   {

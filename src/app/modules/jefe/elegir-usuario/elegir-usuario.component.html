@@ -1,1 +1,28 @@
-<p>elegir-usuario works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="page-header d-flex justify-content-between pb-3">
+      <h1 class="h2">Eelegir usuario del proyecto {{idProyecto}}</h1>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div *ngFor="let usuario of usuarios"
+          ngClass="row mb-2 bg-secondary p-2 border border-primary rounded text-white" attr.id="{{usuario.dni}}">
+          <div class="col-12">
+            <label class="row" for="usuario{{usuario.dni}}">
+              <span class="col-6 text-center">Nombre</span>
+              <span class="col-6 text-center">DNI</span>
+              <input class="col-6" type="text" readonly [(ngModel)]="usuario.nombre">
+              <input class="col-6" type="text" readonly [(ngModel)]="usuario.dni">
+            </label>
+          </div>
+          <div class="col-sm-12 mt-1 text-center">
+            <input type="button" class="btn btn-success m-1" value="Asignar tareas" (click)='asignarTareas(usuario.dni)'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

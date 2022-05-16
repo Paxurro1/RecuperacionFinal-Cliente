@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario';
+import { IdStorageIdService } from 'src/app/services/id.storageID.service';
+import { AsignarTareasService } from 'src/app/services/asignar-tareas.service';
+import { DniStorageDniService } from 'src/app/services/dni.storageDni.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-elegir-usuario',
@@ -7,9 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElegirUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuarios: Usuario[] = [];
+  idProyecto?: number;
+
+  constructor(
+    private storageId: IdStorageIdService,
+    private storageDni: DniStorageDniService,
+    private AsignarService: AsignarTareasService,
+    private router: Router,
+  ) {
+    this.idProyecto = storageId.getId();
+    console.log(this.idProyecto);
+  }
 
   ngOnInit(): void {
+    this.getUsuariosProyectoJefe();
+  }
+
+  getUsuariosProyectoJefe() {
+    this.AsignarService.getUsuariosProyectoJefe(this.idProyecto!).subscribe((response) => {
+      this.usuarios = response;
+      // console.log(this.usuarios);
+    });
+  }
+
+  asignarTareas(dni: string) {
+    console.log(dni)
+    this.storageDni.setDni(dni);
+    this.navegar('jefe/asignar-tareas', { queryParams: '' })
+  }
+
+  navegar(route?: string, params?: any): void {
+    this.router.navigate([route], params);
   }
 
 }

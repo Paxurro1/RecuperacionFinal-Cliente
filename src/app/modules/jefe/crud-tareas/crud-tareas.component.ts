@@ -79,7 +79,7 @@ export class CrudTareasComponent implements OnInit {
   }
 
   public addTarea() {
-    this.router.navigate(['admin/registro-tarea']);
+    this.router.navigate(['jefe/registro-tarea']);
   }
 
 }
