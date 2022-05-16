@@ -39,4 +39,25 @@ export class CrudTareasService {
     return this.http.post(url, datos, { headers: headers });
   }
 
+  public getTareasJefe(id: number) {
+    let url: string = this.ruta + 'getTareasJefe/' + id;
+    return this.http.get<TareaResponse[]>(url);
+  }
+
+  public editarTareaJefe(datos: object) {
+    let url: string = this.ruta + "editarTareaJefe";
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, datos, { headers: headers });
+  }
+
+  public addTareaJefe(datos: object) {
+    let url: string = this.ruta + "addTareaJefe";
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, datos, { headers: headers });
+  }
+
 }

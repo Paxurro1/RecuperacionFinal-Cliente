@@ -1,1 +1,120 @@
-<p>modificar-tarea works!</p>
+<div class="card">
+  <div class="modal-header">
+    <h1 class="modal-title">Edición de tareas</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="col-12 modal-body">
+    <form [formGroup]="datosTarea" novalidate="" (ngSubmit)="onSubmit()" class="row">
+      <div class="mb-3 col-6">
+        <label for="id" class="form-label"><b>ID</b></label>
+        <input type="number" readonly formControlName="id" class="form-control" id="id">
+      </div>
+      <div class="mb-3 col-6">
+        <label for="descripción" class="form-label"><b>Descripción</b></label>
+        <input type="text" formControlName="descripcion" class="form-control" id="descripcion">
+        <div *ngIf="submitted && formulario['descripcion'].errors">
+          <div *ngIf="formulario['descripcion'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La descripción no puede estar
+            vacía.
+          </div>
+          <div *ngIf="formulario['descripcion'].errors['minlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La descripción introducida tiene
+            que tener al menos 5 carácteres.
+          </div>
+          <div *ngIf="formulario['descripcion'].errors['maxlength']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La descripción introducida tiene
+            que tener máximo 30 carácteres.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="dificultad" class="form-label"><b>Dificultad</b></label>
+        <select class="col-4" formControlName="dificultad">
+          <option value='S'>S</option>
+          <option value='M'>M</option>
+          <option value='L'>L</option>
+          <option value='XL'>XL</option>
+        </select>
+        <div *ngIf="submitted && formulario['dificultad'].errors">
+          <div *ngIf="formulario['dificultad'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tienes que elegir una dificultad.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="estimacion" class="form-label"><b>Estimación</b></label>
+        <input type="number" formControlName="estimacion" class="form-control" id="estimacion">
+        <div *ngIf="submitted && formulario['estimacion'].errors">
+          <div *ngIf="formulario['estimacion'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La estimación no puede estar
+            vacía.
+          </div>
+          <div *ngIf="formulario['estimacion'].errors['min']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La estimación no puede ser menor a
+            1 día.
+          </div>
+          <div *ngIf="formulario['estimacion'].errors['max']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La estimación no puede ser mayor a
+            60 días.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="estado" class="form-label"><b>Estado</b></label>
+        <select class="col-4" formControlName="estado">
+          <option value='1'>Por hacer</option>
+          <option value='2'>Haciendo</option>
+          <option value='3'>Hecho</option>
+        </select>
+        <div *ngIf="submitted && formulario['estado'].errors">
+          <div *ngIf="formulario['estado'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tienes que elegir un estado.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="f_comienzo" class="form-label"><b>Fecha de comienzo</b></label>
+        <input type="date" formControlName="f_comienzo" class="form-control" id="f_comienzo">
+        <div *ngIf="submitted && formulario['f_comienzo'].errors">
+          <div *ngIf="formulario['f_comienzo'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha de inicio no puede estar
+            vacía.
+          </div>
+          <div *ngIf="formulario['f_comienzo'].errors['mayorQueHoy']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha tiene que ser igual o
+            mayor que hoy.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="f_fin" class="form-label"><b>Fecha de entrega</b></label>
+        <input type="date" formControlName="f_fin" class="form-control" id="f_fin">
+        <div *ngIf="submitted && formulario['f_fin'].errors">
+          <div *ngIf="formulario['f_fin'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha de entrega no puede estar
+            vacía.
+          </div>
+          <div *ngIf="formulario['f_fin'].errors['menorQueDosMeses']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha tiene que ser menor a 2
+            meses.
+          </div>
+          <div *ngIf="formulario['f_fin'].errors['mayorQueFechaInicio']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha de entrega tiene que ser
+            mayor que la fecha de incio de la tarea.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="porcentaje" class="form-label"><b>Porcentaje</b></label>
+        <input type="range" formControlName="porcentaje" id="porcentaje">
+        <div *ngIf="submitted && formulario['porcentaje'].errors">
+          <div *ngIf="formulario['porcentaje'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El porcentaje no puede estar
+            vacío.
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" value="edicion">Editar tarea</button>
+    </form>
+  </div>
+</div>
