@@ -22,6 +22,11 @@
             aria-current="page"> Crear proyecto
           </a>
         </li>
+        <li *ngIf="usuario.isJefe()">
+          <a class="nav-link link-white" routerLinkActive="active" routerLink="jefe/elegir-proyecto"
+            aria-current="page"> Administrar proyecto
+          </a>
+        </li>
         <li *ngIf="usuario.isUsuario()" class="text-white">
           Eres usuario
         </li>

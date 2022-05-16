@@ -83,4 +83,39 @@ export class GestionProyectoService {
     return this.http.delete(url, { headers });
   }
 
+  public getProyectosJefe(dni: string) {
+    let url: string = this.ruta + 'getProyectosJefe/' + dni;
+    return this.http.get<ProyectoResponse[]>(url).pipe(
+      map((resp: ProyectoResponse[]) => {
+        return resp.map((proyecto) => Proyecto.proyectoJSON(proyecto));
+      })
+    );
+  }
+
+  public getProyectoConUsuariosJefe(id: number){
+    let url: string = this.ruta + "getProyectoConUsuariosJefe/"+id;
+    return this.http.get<ProyectoResponse[]>(url).pipe(
+      map((resp: ProyectoResponse[]) => {
+        return resp;
+      })
+    );
+  }
+
+  public getTrabajadoresJefe(id: number){
+    let url: string = this.ruta + "getTrabajadoresJefe/"+id;
+    return this.http.get<Trabajador[]>(url).pipe(
+      map((resp: Trabajador[]) => {
+        return resp;
+      })
+    );
+  }
+
+  public actualizarTrabajadoresJefe(datos: object) {
+    let url: string = this.ruta + "actualizarTrabajadoresJefe";
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, datos, { headers: headers });
+  }
+
 }
