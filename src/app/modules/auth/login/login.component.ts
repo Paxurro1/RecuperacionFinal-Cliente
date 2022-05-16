@@ -50,20 +50,17 @@ export class LoginComponent implements OnInit {
     this.LoginService.login(datos).subscribe({
       next: (usuario: any) => {
         this.usuario = usuario;
+        this.toastr.success('Login realizado con éxito.', 'Login')
+        this.ponerRol();
         this.storageUser.setUser(this.usuario)
         sessionStorage.setItem(LoginComponent.usuario, JSON.stringify(usuario));
-        this.toastr.success('Login realizado con éxito.', 'Login')
         console.log(this.usuario);
-        window.location.href = ""
-        if (this.isAdministrador()) {
-          console.log('es admin')
+        if (this.usuario.rol_activo == 1) {
           window.location.href = "admin/crud-usuarios"
-        } else if (this.isJefe()) {
-          console.log('es jefe')
-          // window.location.href = ""
-        } else if (this.isUsuario()) {
-          console.log('es usuario')
-          // window.location.href = ""
+        } else if (this.usuario.rol_activo == 2) {
+          window.location.href = "jefe/elegir-proyecto"
+        } else if (this.usuario.rol_activo == 3) {
+          window.location.href = "jefe/crud-usuarios"
         }
       },
       error: e => {
@@ -73,17 +70,27 @@ export class LoginComponent implements OnInit {
     this.onReset();
   }
 
-  isAdministrador(): boolean {
-    return this.usuario.roles?.find(rol => rol.id_rol === 1) != undefined;
+  public ponerRol() {
+    if (this.isAdministrador()) {
+      this.usuario.rol_activo = 1
+    } else if (this.isJefe()) {
+      this.usuario.rol_activo = 2
+    } else {
+      this.usuario.rol_activo = 3
+    }
+  }
+
+  public isAdministrador(): boolean {
+    return this.usuario.roles!.find(rol => rol.id_rol === 1) != undefined;
   }
 
 
-  isJefe(): boolean {
-    return this.usuario.roles?.find(rol => rol.id_rol === 2) != undefined;
+  public isJefe(): boolean {
+    return this.usuario.roles!.find(rol => rol.id_rol === 2) != undefined;
   }
 
 
-  isUsuario(): boolean {
+  public isUsuario(): boolean {
     return this.usuario.roles?.find(rol => rol.id_rol === 3) != undefined;
   }
 

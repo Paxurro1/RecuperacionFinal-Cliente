@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="modal-title">Elije tu rol</h1>
+  </div>
+  <div class="col-12 formulario">
+    <form [formGroup]="rol" (ngSubmit)="onSubmit()" class="row">
+      <div class="mb-3 col-12">
+        <p class="form-label"><b>Roles</b></p>
+        <div class="col pb-2 d-flex justify-content-between" id="roles">
+          <label for="cbox1" *ngIf="usuario?.isAdministrador()"><input type="radio" name="rol" value="1" (change)="onCheckboxChange($event)"> Administrador</label>
+          <label for="cbox2" *ngIf="usuario?.isJefe()"><input type="radio" name="rol" value="2" (change)="onCheckboxChange($event)"> Jefe</label>
+          <label for="cbox3" *ngIf="usuario?.isUsuario()"><input type="radio" name="rol" value="3" (change)="onCheckboxChange($event)"> Usuario</label>
+        </div>
+        <div *ngIf="submitted && formulario['checkArray'].errors">
+          <div *ngIf="formulario['checkArray'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tiene que elegir un rol.</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" value="editar">Elegir rol</button>
+    </form>
+  </div>
+</div>

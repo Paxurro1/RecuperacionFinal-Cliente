@@ -10,6 +10,7 @@ export class Usuario {
       obj['apellidos'],
       obj['dni'],
       obj['roles'],
+      obj['rol_activo'],
     );
   }
 
@@ -19,7 +20,18 @@ export class Usuario {
     public apellidos: string,
     public dni: string,
     public roles?: Array<any>,
+    public rol_activo?: number,
   ) { }
+
+  public ponerRol() {
+    if (this.isAdministrador()) {
+      this.rol_activo = 1
+    } else if (this.isJefe()) {
+      this.rol_activo = 2
+    } else {
+      this.rol_activo = 3
+    }
+  }
 
   public isAdministrador(): boolean {
     return this.roles!.find(rol => rol.id_rol === 1) != undefined;

@@ -94,6 +94,10 @@ export class EditarPerfilComponent implements OnInit {
     this.navegar('user/cambiar-pass', {queryParams:''})
   }
 
+  elegirRol() {
+    this.navegar('user/elegir-rol', {queryParams:''})
+  }
+
   navegar(route?: string, params?: any): void {
     this.router.navigate([route], params);
   }

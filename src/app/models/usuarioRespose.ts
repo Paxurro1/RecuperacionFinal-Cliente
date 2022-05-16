@@ -4,4 +4,5 @@ export interface usuarioResponse {
   apellidos: string;
   dni: string;
   roles?: [];
+  rol_activo?: number;
 }
