@@ -26,7 +26,9 @@ export class ElegirRolComponent implements OnInit {
   ) {
     this.usuario = storageUser.getUser();
     this.rol = this.formBuilder.group({
-      checkArray: this.formBuilder.array([], [Validators.required])
+      rol: [, Validators.compose([
+        Validators.required])
+      ],
     }
     );
   }
@@ -34,28 +36,12 @@ export class ElegirRolComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onCheckboxChange(e: any) {
-    const checkArray: FormArray = this.rol.get('checkArray') as FormArray;
-    if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
-    } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: any) => {
-        if (item.value == e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
-
   onSubmit() {
     this.submitted = true;
     if (!this.rol.valid) {
       return;
     }
-    this.usuario!.rol_activo = this.rol.value.checkArray[0]
+    this.usuario!.rol_activo = this.rol.value.rol
     this.storageUser.setUser(this.usuario!)
     console.log(this.usuario);
     if (this.usuario!.rol_activo == 1) {

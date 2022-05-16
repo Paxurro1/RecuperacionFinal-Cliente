@@ -7,12 +7,12 @@
       <div class="mb-3 col-12">
         <p class="form-label"><b>Roles</b></p>
         <div class="col pb-2 d-flex justify-content-between" id="roles">
-          <label for="cbox1" *ngIf="usuario?.isAdministrador()"><input type="radio" name="rol" value="1" (change)="onCheckboxChange($event)"> Administrador</label>
-          <label for="cbox2" *ngIf="usuario?.isJefe()"><input type="radio" name="rol" value="2" (change)="onCheckboxChange($event)"> Jefe</label>
-          <label for="cbox3" *ngIf="usuario?.isUsuario()"><input type="radio" name="rol" value="3" (change)="onCheckboxChange($event)"> Usuario</label>
+          <label for="cbox1" *ngIf="usuario?.isAdministrador()"><input formControlName="rol" type="radio" name="rol" value="1"> Administrador</label>
+          <label for="cbox2" *ngIf="usuario?.isJefe()"><input formControlName="rol" type="radio" name="rol" value="2"> Jefe</label>
+          <label for="cbox3" *ngIf="usuario?.isUsuario()"><input formControlName="rol" type="radio" name="rol" value="3"> Usuario</label>
         </div>
-        <div *ngIf="submitted && formulario['checkArray'].errors">
-          <div *ngIf="formulario['checkArray'].errors['required']"
+        <div *ngIf="submitted && formulario['rol'].errors">
+          <div *ngIf="formulario['rol'].errors['required']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tiene que elegir un rol.</div>
         </div>
       </div>
