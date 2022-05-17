@@ -82,4 +82,17 @@ export class CrudTareasComponent implements OnInit {
     this.router.navigate(['jefe/registro-tarea']);
   }
 
+  borrarTarea(id: number) {
+    this.tareasService.borrarTareaJefe(id).subscribe({
+      next: (res) => {
+        this.toastr.success('Tarea eliminada.', 'Eliminada');
+        this.getTareasJefe();
+      },
+      error: e => {
+        console.log(e);
+        this.toastr.error('La tarea no ha podido ser eliminada.', 'Error');
+      }
+    })
+  }
+
 }

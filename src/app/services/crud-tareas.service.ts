@@ -60,4 +60,12 @@ export class CrudTareasService {
     return this.http.post(url, datos, { headers: headers });
   }
 
+  public borrarTareaJefe(id: number) {
+    let url: string = this.ruta + 'borrarTareaJefe/' + id;
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.delete(url, { headers });
+  }
+
 }
