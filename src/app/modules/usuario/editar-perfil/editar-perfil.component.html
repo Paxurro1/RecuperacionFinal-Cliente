@@ -61,6 +61,9 @@
           <div *ngIf="formulario['dni'].errors['maxlength']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El dni puede tener como máximo
             9 carácteres.</div>
+            <div *ngIf="formulario['dni'].errors['pattern']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El DNI debe tener 8 números y 1
+            letra.</div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary" value="editar">Editar perfil</button>

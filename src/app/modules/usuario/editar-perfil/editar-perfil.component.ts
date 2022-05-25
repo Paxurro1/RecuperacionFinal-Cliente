@@ -37,7 +37,7 @@ export class EditarPerfilComponent implements OnInit {
         Validators.required, Validators.minLength(3), Validators.maxLength(30)])
       ],
       dni: [this.usuario?.dni, Validators.compose([
-        Validators.required, Validators.minLength(9), Validators.maxLength(9)])
+        Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('[0-9]{8}[A-Za-z]{1}')])
       ],
     }
     );
@@ -62,6 +62,7 @@ export class EditarPerfilComponent implements OnInit {
     this.perfilService.editarPerfil(datos).subscribe({
       next: (usuario: any) => {
         this.usuario = usuario;
+        this.ponerRol();
         this.storageUser.setUser(this.usuario!)
         console.log(this.usuario)
         this.toastr.success('Perfil editado.', 'Registro');
@@ -100,6 +101,30 @@ export class EditarPerfilComponent implements OnInit {
 
   navegar(route?: string, params?: any): void {
     this.router.navigate([route], params);
+  }
+
+  public ponerRol() {
+    if (this.isAdministrador()) {
+      this.usuario!.rol_activo = 1
+    } else if (this.isJefe()) {
+      this.usuario!.rol_activo = 2
+    } else {
+      this.usuario!.rol_activo = 3
+    }
+  }
+
+  public isAdministrador(): boolean {
+    return this.usuario!.roles!.find(rol => rol.id_rol === 1) != undefined;
+  }
+
+
+  public isJefe(): boolean {
+    return this.usuario!.roles!.find(rol => rol.id_rol === 2) != undefined;
+  }
+
+
+  public isUsuario(): boolean {
+    return this.usuario!.roles?.find(rol => rol.id_rol === 3) != undefined;
   }
 
 }
