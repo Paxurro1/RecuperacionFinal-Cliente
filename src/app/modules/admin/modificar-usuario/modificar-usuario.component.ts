@@ -44,22 +44,6 @@ export class ModificarUsuarioComponent implements OnInit {
     this.marcarRoles();
   }
 
-  marcarRoles() {
-    let rolesAux = document.querySelectorAll('#rolesUsuario input') as NodeListOf<HTMLInputElement>;
-    this.usuarioModificado?.roles!.forEach((r: any) => {
-      rolesAux.forEach((element: { checked: any; value: string; }) => {
-        // console.log(r)
-        if (element) {
-          let elemento = parseInt(element.value);
-          // console.log(elemento)
-          if (r.id_rol == elemento) {
-            // console.log('entro')
-            element.checked = true;
-          }
-        }
-      });
-    });
-  }
 
   construirFormulario() {
     this.datosUsuario = this.formBuilder.group({
@@ -74,10 +58,30 @@ export class ModificarUsuarioComponent implements OnInit {
         Validators.required, Validators.minLength(3), Validators.maxLength(30)])
       ],
       dni: [this.usuarioModificado?.dni, Validators.compose([
-        Validators.required, Validators.minLength(9), Validators.maxLength(9)])
+        Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('[0-9]{8}[A-Za-z]{1}')])
       ]
     }
     );
+  }
+
+  marcarRoles() {
+    const checkArray: FormArray = this.datosUsuario.get('checkArray') as FormArray;
+    let rolesAux = document.querySelectorAll('#rolesUsuario input') as NodeListOf<HTMLInputElement>;
+    this.usuarioModificado?.roles!.forEach((r: any) => {
+      rolesAux.forEach((element: { checked: any; value: string; }) => {
+        // console.log(r)
+        if (element) {
+          let elemento = parseInt(element.value);
+          // console.log(elemento)
+          if (r.id_rol == elemento) {
+            // console.log('entro')
+            element.checked = true;
+            // console.log(element.value)
+            checkArray.push(new FormControl(element.value));
+          }
+        }
+      });
+    });
   }
 
   onCheckboxChange(e: any) {

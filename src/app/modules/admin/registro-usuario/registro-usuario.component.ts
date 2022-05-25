@@ -33,7 +33,7 @@ export class RegistroUsuarioComponent implements OnInit {
         Validators.required, Validators.minLength(3), Validators.maxLength(30)])
       ],
       dni: ['', Validators.compose([
-        Validators.required, Validators.minLength(9), Validators.maxLength(9)])
+        Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('[0-9]{8}[A-Za-z]{1}')])
       ],
       pass1: ['', Validators.compose([
         Validators.required, Validators.minLength(8), Validators.maxLength(30), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{8,30})')])

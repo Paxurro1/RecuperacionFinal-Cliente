@@ -36,16 +36,18 @@
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido no puede estar vacío.
           </div>
           <div *ngIf="formulario['apellidos'].errors['minlength']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido tiene que tener al menos
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido tiene que tener al
+            menos
             3 carácteres.</div>
           <div *ngIf="formulario['apellidos'].errors['maxlength']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido puede tener como máximo
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El apellido puede tener como
+            máximo
             30 carácteres.</div>
         </div>
       </div>
       <div class="mb-3 col-6">
-        <label for="nombre" class="form-label"><b>DNI</b></label>
-        <input type="text" formControlName="dni" class="form-control" id="nombre">
+        <label for="dni" class="form-label"><b>DNI</b></label>
+        <input type="text" formControlName="dni" class="form-control" id="dni">
         <div *ngIf="submitted && formulario['dni'].errors">
           <div *ngIf="formulario['dni'].errors['required']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El dni no puede estar vacío.
@@ -56,6 +58,9 @@
           <div *ngIf="formulario['dni'].errors['maxlength']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El dni puede tener como máximo
             9 carácteres.</div>
+          <div *ngIf="formulario['dni'].errors['pattern']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">El DNI debe tener 8 números y 1
+            letra.</div>
         </div>
       </div>
       <div class="mb-3 col-6">
@@ -98,7 +103,8 @@
         </div>
         <div *ngIf="submitted && formulario['checkArray'].errors">
           <div *ngIf="formulario['checkArray'].errors['required']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tiene que tener al menos un rol.</div>
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Tiene que tener al menos un rol.
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary" value="Registro">Registrar usuario</button>
