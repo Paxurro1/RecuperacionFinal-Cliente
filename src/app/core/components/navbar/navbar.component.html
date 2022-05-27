@@ -4,32 +4,37 @@
       <ul class="nav nav-pills flex-column">
         <li *ngIf="usuario.rol_activo == 1">
           <a class="nav-link link-white" routerLinkActive="active" routerLink="admin/crud-usuarios"
-            aria-current="page"> Gestionar usuarios
+            aria-current="page">Gestionar usuarios
           </a>
         </li>
         <li *ngIf="usuario.rol_activo == 1">
           <a class="nav-link link-white" routerLinkActive="active" routerLink="admin/registro-usuarios"
-            aria-current="page"> Añadir usuarios
+            aria-current="page">Añadir usuarios
           </a>
         </li>
         <li *ngIf="usuario.rol_activo == 1">
           <a class="nav-link link-white" routerLinkActive="active" routerLink="admin/elegir-proyecto"
-            aria-current="page"> Administrar proyectos
+            aria-current="page">Administrar proyectos
           </a>
         </li>
         <li *ngIf="usuario.rol_activo == 1">
           <a class="nav-link link-white" routerLinkActive="active" routerLink="admin/crear-proyecto"
-            aria-current="page"> Crear proyecto
+            aria-current="page">Crear proyecto
           </a>
         </li>
         <li *ngIf="usuario.rol_activo == 2">
           <a class="nav-link link-white" routerLinkActive="active" routerLink="jefe/elegir-proyecto"
-            aria-current="page"> Administrar proyectos
+            aria-current="page">Administrar proyectos
           </a>
         </li>
         <li *ngIf="usuario.rol_activo == 3">
           <a class="nav-link link-white" routerLinkActive="active" routerLink="user/elegir-proyecto"
-            aria-current="page"> Elegir proyecto
+            aria-current="page">Elegir proyecto
+          </a>
+        </li>
+        <li *ngIf="usuario.rol_activo == 1">
+          <a class="nav-link link-white" routerLinkActive="active" routerLink="admin/parametrizar-tareas"
+            aria-current="page">Parametrizar Tareas
           </a>
         </li>
       </ul>

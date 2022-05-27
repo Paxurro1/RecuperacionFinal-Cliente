@@ -55,7 +55,7 @@
           </div>
           <div *ngIf="formulario['estimacion'].errors['max']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La estimación no puede ser mayor a
-            60 días.
+            {{maximo!.dias}} días.
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import { RegistroTareaComponent } from './registro-tarea/registro-tarea.componen
 import { ElegirUsuarioComponent } from './elegir-usuario/elegir-usuario.component';
 import { AsignarTareasComponent } from './asignar-tareas/asignar-tareas.component';
 import { CrearProyectoComponent } from './crear-proyecto/crear-proyecto.component';
+import { ParametrizarTareasComponent } from './parametrizar-tareas/parametrizar-tareas.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path:'crear-proyecto',
     component: CrearProyectoComponent
+  },
+  {
+    path:'parametrizar-tareas',
+    component: ParametrizarTareasComponent
   },
 ];
 

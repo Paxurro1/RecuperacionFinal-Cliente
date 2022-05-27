@@ -52,7 +52,7 @@
           </div>
           <div *ngIf="formulario['estimacion'].errors['max']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La estimación no puede ser mayor a
-            60 días.
+            {{maximo!.dias}} días.
           </div>
         </div>
       </div>
@@ -79,8 +79,8 @@
             vacía.
           </div>
           <div *ngIf="formulario['f_fin'].errors['menorQueDosMeses']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha tiene que ser menor a 2
-            meses.
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha tiene que ser menor a {{maximo!.dias}}
+            dias respecto a la fecha de comienzo.
           </div>
           <div *ngIf="formulario['f_fin'].errors['mayorQueFechaInicio']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha de entrega tiene que ser

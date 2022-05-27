@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="page-header d-flex justify-content-between pb-3">
+    <h1 class="h2">Parametrizar tareas</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 formulario">
+    <form [formGroup]="dias" (ngSubmit)="onSubmit()" class="row">
+      <div class="mb-3 col-3">
+        <label for="dias" class="form-label"><b>Dias máximos</b></label>
+        <input type="number" formControlName="maximo" class="form-control" id="dias">
+        <div *ngIf="submitted && formulario['maximo'].errors">
+          <div *ngIf="formulario['maximo'].errors['required']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Los diás máximos no pueden estar vacíos.
+          </div>
+          <div *ngIf="formulario['maximo'].errors['min']"
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Los días máximos deben de ser al menos de un día.
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" value="Registro">Establecer días máximos</button>
+    </form>
+  </div>
+</div>
