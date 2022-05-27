@@ -58,8 +58,9 @@ export class ParametrizarTareasComponent implements OnInit {
     }
     var datos = {
       'id': this.maximo?.id,
-      'dias': this.dias.value.dias,
+      'dias': this.dias.value.maximo,
     }
+    console.log(datos)
     this.parametrizarService.setMaximo(datos).subscribe({
       next: (res) => {
         this.toastr.success('Días máximos actualizados.', 'Actualizado');
