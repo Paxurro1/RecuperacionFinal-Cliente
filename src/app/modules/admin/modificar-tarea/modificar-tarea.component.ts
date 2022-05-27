@@ -100,7 +100,7 @@ export class ModificarTareaComponent implements OnInit {
       ]
     },
       {
-        validator: [this.mayorQueHoy, this.mayorQueFechaInicio]
+        validator: [this.mayorQueFechaInicio]
       }
     );
   }
@@ -112,16 +112,16 @@ export class ModificarTareaComponent implements OnInit {
     });
   }
 
-  mayorQueHoy(control: AbstractControl) {
-    const fechaComienzo = new Date(control.get('f_comienzo')?.value);
-    var fecha = new Date();
-    let ayer = new Date(fecha.getTime() - 24 * 60 * 60 * 1000);
-    // console.log(fechaComienzo)
-    // console.log(hoy)
-    if (fechaComienzo < ayer) {
-      control.get('f_comienzo')?.setErrors({ mayorQueHoy: true });
-    }
-  }
+  // mayorQueHoy(control: AbstractControl) {
+  //   const fechaComienzo = new Date(control.get('f_comienzo')?.value);
+  //   var fecha = new Date();
+  //   let ayer = new Date(fecha.getTime() - 24 * 60 * 60 * 1000);
+  //   // console.log(fechaComienzo)
+  //   // console.log(hoy)
+  //   if (fechaComienzo < ayer) {
+  //     control.get('f_comienzo')?.setErrors({ mayorQueHoy: true });
+  //   }
+  // }
 
   // menorQueDosMeses(control: AbstractControl) {
   //   const fechafin = new Date(control.get('f_fin')?.value);
