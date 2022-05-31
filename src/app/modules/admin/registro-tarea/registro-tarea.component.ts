@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IdStorageIdService } from 'src/app/services/id.storageID.service';
 import { Maximo } from 'src/app/models/maximo';
 import { ParametrizarService } from 'src/app/services/parametrizar.service';
+import { Dificultad } from 'src/app/models/dificultad';
 
 @Component({
   selector: 'app-registro-tarea',
@@ -16,6 +17,7 @@ export class RegistroTareaComponent implements OnInit {
   registro: FormGroup;
   submitted: boolean = false;
   maximo?: Maximo;
+  dificultades: Dificultad[] = [];
   idProyecto?: number;
 
   constructor(
@@ -52,6 +54,14 @@ export class RegistroTareaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMaximo()
+    this.getDificultades()
+  }
+
+  getDificultades() {
+    this.parametrizarService.getDificultades().subscribe((response) => {
+      this.dificultades = response;
+      // console.log(this.dificultades);
+    });
   }
 
   construirFormulario() {

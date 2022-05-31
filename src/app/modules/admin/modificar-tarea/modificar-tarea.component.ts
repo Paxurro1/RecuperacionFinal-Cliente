@@ -6,6 +6,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tarea } from 'src/app/models/tarea';
 import { Maximo } from 'src/app/models/maximo';
 import { ParametrizarService } from 'src/app/services/parametrizar.service';
+import { Dificultad } from 'src/app/models/dificultad';
 
 @Component({
   selector: 'app-modificar-tarea',
@@ -17,6 +18,7 @@ export class ModificarTareaComponent implements OnInit {
   datosTarea: FormGroup;
   submitted: boolean = false;
   maximo?: Maximo;
+  dificultades: Dificultad[] = [];
   public tareaModificada?: Tarea;
 
   constructor(
@@ -37,6 +39,14 @@ export class ModificarTareaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMaximo()
+    this.getDificultades()
+  }
+
+  getDificultades() {
+    this.parametrizarService.getDificultades().subscribe((response) => {
+      this.dificultades = response;
+      // console.log(this.dificultades);
+    });
   }
 
   construirFormulario() {

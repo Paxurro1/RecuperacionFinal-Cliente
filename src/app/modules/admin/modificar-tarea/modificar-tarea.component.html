@@ -30,10 +30,7 @@
       <div class="mb-3 col-6">
         <label for="dificultad" class="form-label"><b>Dificultad</b></label>
         <select class="col-4" formControlName="dificultad">
-          <option value='S'>S</option>
-          <option value='M'>M</option>
-          <option value='L'>L</option>
-          <option value='XL'>XL</option>
+          <option *ngFor="let d of dificultades" [value]="d.dificultad">{{d.dificultad}}</option>
         </select>
         <div *ngIf="submitted && formulario['dificultad'].errors">
           <div *ngIf="formulario['dificultad'].errors['required']"

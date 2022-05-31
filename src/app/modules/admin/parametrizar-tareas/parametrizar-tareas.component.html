@@ -11,14 +11,38 @@
         <input type="number" formControlName="maximo" class="form-control" id="dias">
         <div *ngIf="submitted && formulario['maximo'].errors">
           <div *ngIf="formulario['maximo'].errors['required']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Los diás máximos no pueden estar vacíos.
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Los diás máximos no pueden estar
+            vacíos.
           </div>
           <div *ngIf="formulario['maximo'].errors['min']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Los días máximos deben de ser al menos de un día.
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">Los días máximos deben de ser al
+            menos de un día.
           </div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary" value="Registro">Establecer días máximos</button>
+    </form>
+    <form class="row">
+      <div class="mb-3 col-12">
+        <label for="dificultades" class="form-label"><b>Dificultades</b></label>
+        <div class="row">
+          <div class="col-4" *ngFor="let d of dificultades" attr.id="{{d.id}}">
+            <div class="row" attr.id="{{d.id}}">
+              <input type="text" name="" class="form-control" [(ngModel)]="d.dificultad" [ngModelOptions]="{standalone: true}">
+              <button (click)="borrarDificultad(d.id)" class="btn btn-danger px-2 py-1 me-2" type="submit"
+                aria-label="eliminar">
+                Borrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button (click)="establecerDificultades()" class="btn btn-primary" type="submit">
+        Establecer dificultades
+      </button>
+      <button (click)="addDificultad()" class="btn btn-primary mt-3" type="submit">
+        Añadir dificultad
+      </button>
     </form>
   </div>
 </div>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormArray, FormControl } from '@angular/forms';
 import { ParametrizarService } from 'src/app/services/parametrizar.service';
 import { ToastrService } from 'ngx-toastr';
 import { Maximo } from 'src/app/models/maximo';
+import { Dificultad } from 'src/app/models/dificultad';
 
 @Component({
   selector: 'app-parametrizar-tareas',
@@ -14,6 +15,7 @@ export class ParametrizarTareasComponent implements OnInit {
   dias: FormGroup;
   submitted: boolean = false;
   maximo?: Maximo;
+  dificultades: Dificultad[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +34,7 @@ export class ParametrizarTareasComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMaximo()
+    this.getDificultades()
   }
 
   construirFormulario() {
@@ -49,6 +52,13 @@ export class ParametrizarTareasComponent implements OnInit {
       this.construirFormulario();
     });
 
+  }
+
+  getDificultades() {
+    this.parametrizarService.getDificultades().subscribe((response) => {
+      this.dificultades = response;
+      // console.log(this.dificultades);
+    });
   }
 
   onSubmit() {
@@ -73,6 +83,46 @@ export class ParametrizarTareasComponent implements OnInit {
 
   get formulario() {
     return this.dias.controls;
+  }
+
+  borrarDificultad(id:number){
+    // console.log(this.dificultades?.length)
+    // console.log(id)
+    if (this.dificultades!.length == 1) {
+      this.toastr.error('Tiene que haber al menos una dificultad', 'Error');
+    } else {
+      this.parametrizarService.borrarDificultad(id).subscribe({
+        next: (res) => {
+          this.getDificultades();
+          this.toastr.success('Dificultad borrada', 'Actualizado');
+        },
+        error: e => {
+          this.toastr.error('No se pudo borrar', 'Error');
+        }
+      })
+    }
+  }
+
+  establecerDificultades(){
+    var datos = {
+      'dificultades': this.dificultades
+    }
+    console.log(datos);
+    this.parametrizarService.establecerDificultades(datos).subscribe({
+      next: (res) => {
+        this.toastr.success('Dificultades actualizadas', 'Actualizado');
+      },
+      error: e => {
+        this.toastr.error('Error al actualizar las dificultades', 'Error');
+      }
+    })
+  }
+
+  addDificultad(){
+    this.parametrizarService.addDificultad().subscribe((response) => {
+      this.getDificultades();
+      // console.log(this.dificultades);
+    });
   }
 
 }
