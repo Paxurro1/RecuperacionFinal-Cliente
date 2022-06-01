@@ -104,18 +104,28 @@ export class ParametrizarTareasComponent implements OnInit {
   }
 
   establecerDificultades(){
-    var datos = {
-      'dificultades': this.dificultades
-    }
-    console.log(datos);
-    this.parametrizarService.establecerDificultades(datos).subscribe({
-      next: (res) => {
-        this.toastr.success('Dificultades actualizadas', 'Actualizado');
-      },
-      error: e => {
-        this.toastr.error('Error al actualizar las dificultades', 'Error');
+    var bandera = true;
+    this.dificultades.forEach(d => {
+      if (!d.dificultad && bandera) {
+        bandera = false;
       }
-    })
+    });
+    if (bandera) {
+      var datos = {
+        'dificultades': this.dificultades
+      }
+      console.log(datos);
+      this.parametrizarService.establecerDificultades(datos).subscribe({
+        next: (res) => {
+          this.toastr.success('Dificultades actualizadas', 'Actualizado');
+        },
+        error: e => {
+          this.toastr.error('Error al actualizar las dificultades', 'Error');
+        }
+      })
+    } else {
+      this.toastr.error('Alguna dificultad está vacía.', 'Error');
+    }
   }
 
   addDificultad(){
