@@ -94,7 +94,7 @@ export class RegistroUsuarioComponent implements OnInit {
       },
       error: e => {
         console.log(e);
-        this.toastr.error('El usuario no ha podido registrarse.', 'Error');
+        this.toastr.error('El email o el DNI ya están en uso.', 'Error');
       }
     })
     // console.log(datos);
