@@ -68,4 +68,20 @@ export class CrudTareasService {
     return this.http.delete(url, { headers });
   }
 
+  public cerrarTarea(id: number) {
+    let url: string = this.ruta + 'cerrarTarea/' + id;
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get(url, { headers });
+  }
+
+  public cerrarTareaJefe(id: number) {
+    let url: string = this.ruta + 'cerrarTareaJefe/' + id;
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get(url, { headers });
+  }
+
 }

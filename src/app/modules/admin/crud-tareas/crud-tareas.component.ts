@@ -91,6 +91,19 @@ export class CrudTareasComponent implements OnInit {
     })
   }
 
+  cerrarTarea(id: number) {
+    this.tareasService.cerrarTarea(id).subscribe({
+      next: (res) => {
+        this.toastr.success('Tarea cerrada.', 'Cerrada');
+        this.getTareas();
+      },
+      error: e => {
+        console.log(e);
+        this.toastr.error('La tarea no ha podido ser cerrada.', 'Error');
+      }
+    })
+  }
+
   public addTarea() {
     this.router.navigate(['admin/registro-tarea']);
   }
