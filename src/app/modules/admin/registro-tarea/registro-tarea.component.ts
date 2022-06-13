@@ -47,7 +47,7 @@ export class RegistroTareaComponent implements OnInit {
       ],
     },
     {
-      validator: [this.mayorQueHoy, this.mayorQueFechaInicio]
+      validator: [this.mayorQueHoy, this.mayorQueFechaInicio, this.menorQueDosMeses]
     }
     );
   }
@@ -83,7 +83,7 @@ export class RegistroTareaComponent implements OnInit {
       ],
     },
     {
-      validator: [this.mayorQueHoy, this.mayorQueFechaInicio]
+      validator: [this.mayorQueHoy, this.mayorQueFechaInicio, this.menorQueDosMeses]
     }
     );
   }
@@ -106,14 +106,14 @@ export class RegistroTareaComponent implements OnInit {
     }
   }
 
-  // menorQueDosMeses(control: AbstractControl) {
-  //   const fechafin = new Date(control.get('f_fin')?.value);
-  //   const fechaComienzo = new Date(control.get('f_comienzo')?.value);
-  //   let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * this.maximo!.dias);
-  //   if (fechafin > sesenta) {
-  //     control.get('f_fin')?.setErrors({ menorQueDosMeses: true });
-  //   }
-  // }
+  menorQueDosMeses(control: AbstractControl) {
+    // const fechafin = new Date(control.get('f_fin')?.value);
+    // const fechaComienzo = new Date(control.get('f_comienzo')?.value);
+    // let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * this.maximo!.dias);
+    // if (fechafin > sesenta) {
+    //   control.get('f_fin')?.setErrors({ menorQueDosMeses: true });
+    // }
+  }
 
   mayorQueFechaInicio(control: AbstractControl) {
     const fechaComienzo = new Date(control.get('f_comienzo')?.value);
@@ -130,7 +130,7 @@ export class RegistroTareaComponent implements OnInit {
     }
     const fechafin = new Date(this.registro.value.f_fin);
     const fechaComienzo = new Date(this.registro.value.f_comienzo);
-    let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * this.maximo!.dias);
+    let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * this.maximo!.dias + 1);
     if (fechafin < sesenta) {
       var datos = {
         'descripcion': this.registro.value.descripcion,
@@ -154,7 +154,7 @@ export class RegistroTareaComponent implements OnInit {
       // console.log(datos);
       this.onReset();
     } else{
-      this.toastr.error('La fecha de finalización no puede ser mayor a ' + this.maximo!.dias + ' respecto a la fecha de inicio.', 'Error');
+      this.registro.get('f_fin')?.setErrors({ menorQueDosMeses: true });
     }
 
   }

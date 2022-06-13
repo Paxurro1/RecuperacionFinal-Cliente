@@ -30,10 +30,7 @@
       <div class="mb-3 col-6">
         <label for="dificultad" class="form-label"><b>Dificultad</b></label>
         <select class="col-4" formControlName="dificultad">
-          <option value='S'>S</option>
-          <option value='M'>M</option>
-          <option value='L'>L</option>
-          <option value='XL'>XL</option>
+          <option *ngFor="let d of dificultades" [value]="d.dificultad">{{d.dificultad}}</option>
         </select>
         <div *ngIf="submitted && formulario['dificultad'].errors">
           <div *ngIf="formulario['dificultad'].errors['required']"
@@ -55,7 +52,7 @@
           </div>
           <div *ngIf="formulario['estimacion'].errors['max']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La estimación no puede ser mayor a
-            60 días.
+            {{maximo!.dias}} días.
           </div>
         </div>
       </div>
@@ -95,8 +92,8 @@
             vacía.
           </div>
           <div *ngIf="formulario['f_fin'].errors['menorQueDosMeses']"
-            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha tiene que ser menor a 2
-            meses.
+            class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha tiene que ser menor o igual a {{maximo!.dias}}
+            dias respecto a la fecha de comienzo.
           </div>
           <div *ngIf="formulario['f_fin'].errors['mayorQueFechaInicio']"
             class="h6 text-danger bg-white rounded border border-2 border-danger p-2">La fecha de entrega tiene que ser

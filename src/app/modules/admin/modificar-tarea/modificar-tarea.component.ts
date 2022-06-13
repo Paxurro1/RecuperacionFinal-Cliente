@@ -77,7 +77,7 @@ export class ModificarTareaComponent implements OnInit {
       ]
     },
       {
-        validator: [this.mayorQueFechaInicio]
+        validator: [this.mayorQueFechaInicio, this.menorQueDosMeses]
       }
     );
   }
@@ -110,7 +110,7 @@ export class ModificarTareaComponent implements OnInit {
       ]
     },
       {
-        validator: [this.mayorQueFechaInicio]
+        validator: [this.mayorQueFechaInicio, this.menorQueDosMeses]
       }
     );
   }
@@ -133,16 +133,14 @@ export class ModificarTareaComponent implements OnInit {
   //   }
   // }
 
-  // menorQueDosMeses(control: AbstractControl) {
-  //   const fechafin = new Date(control.get('f_fin')?.value);
-  //   const fechaComienzo = new Date(control.get('f_comienzo')?.value);
-  //   let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * 61);
-  //   // console.log(fechaFin)
-  //   // console.log(hoy)
-  //   if (fechafin > sesenta) {
-  //     control.get('f_fin')?.setErrors({ menorQueDosMeses: true });
-  //   }
-  // }
+  menorQueDosMeses(control: AbstractControl) {
+    // const fechafin = new Date(control.get('f_fin')?.value);
+    // const fechaComienzo = new Date(control.get('f_comienzo')?.value);
+    // let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * this.maximo!.dias);
+    // if (fechafin > sesenta) {
+    //   control.get('f_fin')?.setErrors({ menorQueDosMeses: true });
+    // }
+  }
 
   mayorQueFechaInicio(control: AbstractControl) {
     const fechaComienzo = new Date(control.get('f_comienzo')?.value);
@@ -163,7 +161,7 @@ export class ModificarTareaComponent implements OnInit {
     }
     const fechafin = new Date(this.datosTarea.value.f_fin);
     const fechaComienzo = new Date(this.datosTarea.value.f_comienzo);
-    let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * this.maximo!.dias);
+    let sesenta = new Date(fechaComienzo.getTime() + (24 * 60 * 60 * 1000) * this.maximo!.dias + 1);
     if (fechafin < sesenta) {
       var datos = {
         'id': this.datosTarea.value.id,
@@ -186,7 +184,7 @@ export class ModificarTareaComponent implements OnInit {
         }
       })
     } else {
-      this.toastr.error('La fecha de finalización no puede ser mayor a ' + this.maximo!.dias + ' respecto a la fecha de inicio.', 'Error');
+      this.datosTarea.get('f_fin')?.setErrors({ menorQueDosMeses: true });
     }
   }
 
